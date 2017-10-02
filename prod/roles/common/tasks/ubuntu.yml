@@ -1,0 +1,39 @@
+##
+# updates the APT package cache and install packages
+# servers necessary for web. also enables firewall
+##
+- apt: update_cache=yes
+  become: true
+
+- name: ensure web server packages are installed
+  apt: name={{item}}
+  become: true
+  with_items:
+    - build-essential
+    - libssl-dev
+    - libz-dev
+    - fail2ban
+    - python-virtualenv
+    - python-dev
+    - libffi-dev
+    - autoconf
+    - libtool
+    - libxml2-dev
+    - libxslt1-dev
+    - zlib1g-dev
+
+- name: enable SSH in firewall
+  ufw: rule=allow port=22
+  become: true
+
+- name: enable HTTP connections for web server
+  ufw: rule=allow port=80
+  become: true
+
+- name: enable HTTPS connections for web server
+  ufw: rule=allow port=443
+  become: true
+
+- name: enable firewall
+  ufw: state=enabled
+  become: true
