@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request
+from flask import Flask, make_response, render_template, request
 from flask_bootstrap import Bootstrap
 from flask_script import Manager
 
@@ -15,9 +15,7 @@ def hello_world():
 
 @app.route('/ussd-pay/', methods=['GET', 'POST'])
 def ussd_pay():
-    print "hello"
     if request.method == 'POST':
-        print "log1"
         text = request.values.get("text", None)
         phonenumber = request.values.get('phonenumber')
 
@@ -38,13 +36,14 @@ def ussd_pay():
         else:
             response = 'END goodbye'
 
+        response = make_response(response, 200)
+        response.headers['Content-Type'] = "text/plain"
         return response
+
 
 
     else:
         return 'Hello There, you\'re not supposed to be here'
-
-
 
 
 
