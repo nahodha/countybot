@@ -36,9 +36,9 @@ def ussd_pay():
         else:
             response = 'END goodbye'
 
-        response = make_response(response, 200)
-        response.headers['Content-Type'] = "text/plain"
-        return response
+        final_response = make_response(response, 200)
+        final_response.headers['Content-Type'] = "text/plain"
+        return final_response
 
 
 
