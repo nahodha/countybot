@@ -35,10 +35,14 @@ def ussd_endpoint():
             response == 'CON Enter your new locaion.\n Additional charges will be incurred.'
         else:
             response = 'END goodbye'
+
+        return Response(response, mimetype='text/plain')
+
+
     else:
         return 'Hello There, you\'re not supposed to be here'
 
-        return Response(response, mimetype='text/plain')
+
 
 
 
