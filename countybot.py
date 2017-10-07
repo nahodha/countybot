@@ -16,8 +16,8 @@ def hello_world():
 @app.route('/ussd-pay', methods=['GET', 'POST'])
 def ussd_endpoint():
     if request.method == 'POST':
-        text = request.args['text']
-        phonenumber = request.args['phonenumber']
+        text = request.values.get("text", None)
+        phonenumber = request.values.get('phonenumber')
 
         if text == '':
             response = 'CON Welcome to CountyBot how may we help you\n'
