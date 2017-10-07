@@ -1,0 +1,95 @@
+{% extends "bootstrap/base.html" %}
+
+{% block head %}
+  <title>CountyBot - Login</title>
+  {{ moment.include_jquery() }}
+  {{ moment.include_moment() }}
+  {% block styles %}
+      {{ super() }}
+      <link href="{{ url_for('static', filename='css/styles.css') }}" rel="stylesheet">
+
+      <!-- favicon -->
+      <link rel="shortcut icon" href="{{ url_for('static', filename='img/countybot_logo.png') }}" />
+
+    {% endblock styles %}
+{% endblock %}
+
+{% block navbar %}
+
+
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+      <div class="container">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+
+          <p>
+            <!-- <a href="#" class="navbar-left"><img  id="logo-banner" src="{{ url_for('static', filename='img/countybot_banner.png') }}" ></a> -->
+            <a class="navbar-brand" href="#"><span style="color:green">Countybot</a>
+          </p>
+
+        </div>
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+          <ul class="nav navbar-nav">
+            <li>
+              <a href="#about">About</a>
+            </li>
+            <li>
+              <a href="#services">Services</a>
+            </li>
+            <li>
+              <a href="#contact">Contact</a>
+            </li>
+            <li>
+                <a href="{{ url_for('logout') }}">Logout</a>
+            </li>
+          </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+      </div>
+        <!-- /.container -->
+    </nav>
+  {% endblock navbar %}
+
+{% block content %}
+  <div class="table-responsive">
+    <div class="col-md-6">
+      <table class="table table-striped">
+         <thead>
+        <tr>
+          <th>Id</th>
+          <th>Location</th>
+          <th>TimeStamp</th>
+          <th>amount</th>
+          <th>Hash</th>
+        </tr>
+      </thead>
+      <tbody>
+
+        {% for transaction in transactions %}
+        <tr>
+         <td>{{ transaction.user }}</td>
+         <td>{{ transaction.location }}</td>
+         <td>{{ moment(transaction.timestamp).format('YYYY-MM-DD HH:mm') }}</td>
+         <td>{{ transaction.amount }}</td>
+         <td>{{ transaction.block }}</td>
+        </tr>
+        {% endfor %}
+
+      </tbody>
+      </table>
+    </div>
+<div class="col-md-4">
+<p>
+</p>
+</div>
+
+{% endblock %}
