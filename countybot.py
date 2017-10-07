@@ -19,7 +19,7 @@ def ussd_endpoint():
         text = request.args['text']
         phonenumber = request.args['phonenumber']
 
-        if text == ''
+        if text == '':
             response = 'CON Welcome to CountyBot how may we help you\n'
             response += '1. Register'
             response += '2. Make Payment'
@@ -33,6 +33,8 @@ def ussd_endpoint():
 
         elif text == '3':
             response == 'CON Enter your new locaion.\n Additional charges will be incurred.'
+        else:
+            response = 'END goodbye'
 
         return response
 
