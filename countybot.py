@@ -25,10 +25,10 @@ def ussd_endpoint():
             response += '2. Make Payment'
             response += '3. Change Location'
 
-        else if text == '1':
+        elif text == '1':
             response = 'CON Enter your name'
 
-        else if text == '2':
+        elif text == '2':
             response == 'CON Enter amount payment'
 
         elif text == '3':
