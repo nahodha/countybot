@@ -35,6 +35,8 @@ def ussd_endpoint():
             response == 'CON Enter your new locaion.\n Additional charges will be incurred.'
         else:
             response = 'END goodbye'
+    else:
+        return 'Hello There, you\'re not supposed to be here'
 
         return response
 
