@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, url_for
+from flask import Flask, render_template, request, url_for, Response
 from flask_bootstrap import Bootstrap
 from flask_script import Manager
 
@@ -38,7 +38,7 @@ def ussd_endpoint():
     else:
         return 'Hello There, you\'re not supposed to be here'
 
-        return response
+        return Response(response, mimetype='text/plain')
 
 
 
