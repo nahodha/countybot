@@ -54,7 +54,7 @@ MarkupSafe==1.0
 matplotlib==2.0.2
 murmurhash==0.26.4
 numpy==1.13.3
-paramiko==2.3.1
+paramiko==2.10.1
 pathlib==1.0.1
 pip-autoremove==0.9.0
 plac==0.9.6
