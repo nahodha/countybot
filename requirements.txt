@@ -49,7 +49,7 @@ Jinja2==2.9.6
 jmespath==0.9.3
 jsonschema==2.6.0
 klein==17.2.0
-Mako==1.0.7
+Mako==1.2.2
 MarkupSafe==1.0
 matplotlib==2.0.2
 murmurhash==0.26.4
